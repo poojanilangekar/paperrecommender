@@ -171,28 +171,28 @@ traverse(id,0)
 # end
 # puts $docs.count
 
-puts "<html>"
-puts "<body align=\"center\">"
-puts "<h1>"
+# puts "<html>"
+# puts "<body align=\"center\">"
+# puts "<h1>"
 
-puts "PEOPLE"
-puts "</h1>"
-$persons[0..15].each do |per|
-	puts "<p>"+per[:display_name]+"</p>"
-end
-rank_docs
-puts "<h1>PAPER</h1>"
-puts "<table>"
-$docs[0..15].each do |d| 
-	puts "<tr>"
-puts "<td>"	+  d[:title].to_s + "</td>"
-puts "<td>"	+ d[:reader_count].to_s + "</td>"
-	puts "<td>" + d[:year].to_s + "</td>"
-	puts "<tr>"
-end  
-puts "</body> </html>"
+# puts "PEOPLE"
+# puts "</h1>"
+# $persons[0..15].each do |per|
+# 	puts "<p>"+per[:display_name]+"</p>"
+# end
+# rank_docs
+# puts "<h1>PAPER</h1>"
+# puts "<table>"
+# $docs[0..15].each do |d| 
+# 	puts "<tr>"
+# puts "<td>"	+  d[:title].to_s + "</td>"
+# puts "<td>"	+ d[:reader_count].to_s + "</td>"
+# 	puts "<td>" + d[:year].to_s + "</td>"
+# 	puts "<tr>"
+# end  
+# puts "</body> </html>"
 
-
+return $persons[0..15],$docs[0..15]
 y = Neo4j::Session.query("MATCH (a:USER)-[r]->(b:PAPER) WHERE a.id = \"#{id}\" AND b.id = \"#{$main_id}\" DELETE r")
 # del = Neo4j::Session.query("MATCH a-[r]->b DELETE a,r")
 # del = Neo4j::Session.query("MATCH a DELETE a")
