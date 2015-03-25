@@ -36,9 +36,10 @@ require 'json'
     # POST /papers.json
     def create
       @paper = Paper.new(paper_params)
-      respond_to do |format|
+	 respond_to do |format|
         if @paper.save
-        filename =  @paper.userdoc.path      
+        filename =  @paper.userdoc.path    
+        puts filename  
         response = RestClient.post('http://maui-indexer.appspot.com/mauiapp',
           :document => File.new(filename,"rb"),
           :domain => "keywords")
